@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+
+
+import tflite_runtime.interpreter as tflite
+
+interpreter = tflite.Interpreter(model_path="/home/pi/ied_ws/my_model.tflite")
+interpreter.allocate_tensors()
+
+print(cv2.__version__)
+
+cap = cv2.VideoCapture("/dev/video0",cv2.CAP_V4L)
+
+_, image = cap.read()
+print(image)
+cv2.imwrite('hello.jpg',image)
